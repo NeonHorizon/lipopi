@@ -60,6 +60,8 @@ Whilst the Pi is running the PowerBoost informs the Pi of the battery status by 
 
 15. Connect a wire between the low battery line (LB / LBO) on the PowerBoost and pin 10 (GPIO 15 - UART RXD) on the Raspberry Pi, this is to tell the Pi when the battery is low (you can use a different GPIO if you prefer).
 
+==
+
 ###Software
 1. Run sudo raspi-config and under "Advanced Options" select "Serial" followed by "No". This prevents the Pi using GPIO 14 for the console (which would shut off the power).
 
@@ -101,3 +103,6 @@ This program is free software: you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with this program.  If not, see [http://www.gnu.org/licenses/](http://www.gnu.org/licenses/).
+
+###Credits
+[Daniel Bull](https://google.com/+DanielBull)
