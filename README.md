@@ -30,6 +30,8 @@ Whilst the Pi is running the PowerBoost informs the Pi of the battery status by 
 ###Hardware
 ![circuit](https://raw.github.com/NeonHorizon/lipopi/master/pictures/circuit.png)
 
+*(Please Note: Do not connect devices to the Pi which use GPIO 14 or 15 (UART/Serial) with LiPoPi as they will cause your Pi to power off or shutdown)*
+
 1. Connect the PowerBoost's 5v output to your Raspberry Pi either by soldering wires directly between the two (you can use the GPIO to power the Pi for example) or by attaching the optional USB socket to the PowerBoost and using a regular micro USB cable between the two.
 
 2. Put a known good SD card in your Pi, connect a LiPo battery to the PowerBoost and check that the Pi starts up straight away and runs correctly (you may need to charge the battery first).
