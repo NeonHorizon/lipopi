@@ -83,7 +83,7 @@ Whilst the Pi is running the PowerBoost informs the Pi of the battery status by 
 
 10. The last part of the script ( >> /home/pi/low_bat_shutdown.log 2&>1 ) produces a log file in your home directory, you can change this if you wish.
 
-11. If all is good you should be able to leave the Pi running and when the battery gets low it should shut down. You can check this worked OK by running the Pi until it shuts down then powering it up again (once you have connected power) and checking the log file. If the file is blank then the Pi was not shutdown properly.
+11. If all is good you should be able to leave the Pi running and when the battery gets low it should shut down. You can check this worked OK by running the Pi until it goes off then powering it up again (once you have connected power) and checking the log file. If the file is blank then the Pi was not shutdown properly.
 
 ==
 
