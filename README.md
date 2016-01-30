@@ -23,7 +23,7 @@ LiPoPi
 ###How it Works
 When pushed the LiPoPi power button connects the battery output (Bat) to the enable line (EN) on the Adafruit PowerBoost which then powers up boosting the LiPo's 3.7v to the ~5.2v required by the Pi. This causes the Pi to begin to boot and after about 3 seconds GPIO 14 (UART TXD) goes high (due to its unique characteristic of going to 3.3v whilst the Pi is running and back to 0v when the Pi is shut down). This then takes over the job of keeping the enable line on the PowerBoost high and the Pi remains powered up even after the pushbutton is released.
 
-Whilst the Pi is running the PowerBoost informs the Pi of the battery status by switching the LB / LBO pin (which is connected to GPIO 15 - UART RXD) high when the battery is low. This is picked up by a cron task on the Pi which initiates a graceful shutdown making sure no data is lost and the SD card does not get corrupted. Once the Pi is shutdown (for whatever reason) GPIO 14 goes low again, causing the PowerBoost's enable line to drop and the whole system to power off.
+Whilst the Pi is running the PowerBoost informs the Pi of the battery status by switching the LB / LBO pin (which is connected to GPIO 15 - UART RXD) low when the battery is low. This is picked up by a cron task on the Pi which initiates a graceful shutdown making sure no data is lost and the SD card does not get corrupted. Once the Pi is shutdown (for whatever reason) GPIO 14 goes low again, causing the PowerBoost's enable line to drop and the whole system to power off.
 
 ==
 
