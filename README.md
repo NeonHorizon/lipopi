@@ -71,7 +71,7 @@ Whilst the Pi is running the PowerBoost informs the Pi of the battery status by 
 
 3. Make it executable with chmod +x low_bat_shutdown
 
-4. If you used a pin other than GPIO 14 for the low battery line (hardware step 15), edit this file and change the pin number (otherwise you don't need to edit it at all).
+4. If you used a pin other than GPIO 15 for the low battery line (hardware step 15), edit this file and change the pin number (otherwise you don't need to edit it at all).
 
 5. Execute this script by typing ./low_bat_shutdown nothing should happen. If the Pi shuts down then you did something wrong in Hardware step 15.
 
@@ -89,7 +89,7 @@ Whilst the Pi is running the PowerBoost informs the Pi of the battery status by 
 
 ==
 
-###Example Implimentation
+###Example Implementation
 ![running](https://raw.github.com/NeonHorizon/lipopi/master/pictures/running.jpg)
 ![connectors](https://raw.github.com/NeonHorizon/lipopi/master/pictures/connectors.jpg)
 ![wiring](https://raw.github.com/NeonHorizon/lipopi/master/pictures/wiring.jpg)
