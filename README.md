@@ -8,6 +8,11 @@ LiPoPi
 - **License:** GPL Version 3
 
 ==
+###Power-Up / Power-Down Version
+
+See [this page](/README.power_up_power_down.md) for a version in which the push button switch can both power up the Raspberry Pi and trigger an orderly shutdown
+
+==
 
 ###Features
 - Push button to power up the Pi (requires a long push - good for preventing accidental starts)
@@ -25,10 +30,6 @@ When pushed the LiPoPi power button connects the battery output (Bat) to the ena
 
 Whilst the Pi is running the PowerBoost informs the Pi of the battery status by switching the LB / LBO pin (which is connected to GPIO 15 - UART RXD) low when the battery is low. This is picked up by a cron task on the Pi which initiates a graceful shutdown making sure no data is lost and the SD card does not get corrupted. Once the Pi is shutdown (for whatever reason) GPIO 14 goes low again, causing the PowerBoost's enable line to drop and the whole system to power off.
 
-==
-###Power-Up / Power-Down Version
-
-See [this page](/README.power_up_power_down.md) for a version in which the push button switch can both power up the Raspberry Pi and trigger an orderly shutdown
 
 ==
 
