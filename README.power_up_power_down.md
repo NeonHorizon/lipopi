@@ -32,7 +32,7 @@ The 1000C is capable of supplying up to 1000mA to Raspberry Pi whereas the 500C 
 than that in practice.
 
 The other big difference is that the 1000C can supply power to the Pi directly from the USB input when the battery is discharged. In other words, when
-connected to a USB input, it can power the Pi directly and charge up the attached battery. The charger component on the 500C can only charge the
+connected to a USB input, it can power the Pi directly *and* charge up the attached battery. The charger component on the 500C can only charge the
 battery.
 
 This makes the 1000C the better choice for most Pi projects that you want to run from a LiPo battery. But do pay heed to the Adafruit warning about
@@ -70,7 +70,7 @@ safe shutdown of the Pi.
 
 In addition, the script records the event in a log file (lipopi.log) and sends a system wide message to any logged in users via the 'wall' command.
 
-The script is relatively straighforward. Be sure to change the GPIO pin definitions if you want to use different pins.
+The script is straightforward. Be sure to change the GPIO pin definitions if you want to use different pins.
 
 The script sets up triggers with callback functions that are executed only when a change is detected on the GPIO pin.
 This avoids having a script that continually polls the pins. There is a loop in the script but this simply calls 'sleep' and prevents
@@ -80,7 +80,7 @@ You might want to put the script in its own directory such as /home/pi/lipopi
 
 You can run the script directly from the command line to test things out.
 
->NOTE - Be sure to Run sudo raspi-config and under "Advanced Options" select "Serial" followed by "No".
+>NOTE - Before doing anything, be sure to run **sudo raspi-config** and under "Advanced Options" select "Serial" followed by "No".
 >This prevents the Pi using GPIO 14 for the console (which would shut off the power).
 
 
@@ -93,14 +93,14 @@ To have lipopi.py run automatically when you boot your machine, you can set up a
 
 1: Copy the service file to /etc/systemd
 
-Modify the file to point to where your lipopi.py is located, then
+Modify the file **lipopi.service** to point to where your copy of **lipopi.py** is located, then
 
 ```bash
 $ sudo cp lipopi.service /etc/systemd/system/.
 ```
 
 
-2: Enable the service
+2: Enable and start the service
 
 ```bash
 $ sudo systemctl enable lipopi.service
@@ -113,7 +113,7 @@ There is no need to restart the Pi
 
 Push the button and the Pi should shut down. Push it again (for several seconds) and the Pi will boot up.
 
-Log files will be written to /home/pi/lipopi - change this in the lipopi.py script
+The log file will be written to /home/pi/lipopi - change this in the lipopi.py script if you want.
 
 
 
