@@ -1,0 +1,18 @@
+LiPoPi shutdown service using systemd
+
+1: Copy the service file to /etc/systemd
+
+$ sudo cp lipopi.service /etc/systemd/system/.
+
+2: Enable the service
+
+$ sudo systemctl enable lipopi.service
+$ sudo systemctl start  lipopi.service
+
+There is no need to restart the Pi
+
+3: Try it out...
+
+Log files will be written to /home/pi/lipopi - change this in the lipopi.py script
+
+
