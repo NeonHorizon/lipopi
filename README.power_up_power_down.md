@@ -45,12 +45,16 @@ The pin layout differs between the two boards and so two diagrams are shown here
 
 1: Copy the service file to /etc/systemd
 
+```bash
 $ sudo cp lipopi.service /etc/systemd/system/.
+```
 
 2: Enable the service
 
+```bash
 $ sudo systemctl enable lipopi.service
 $ sudo systemctl start  lipopi.service
+```
 
 There is no need to restart the Pi
 
