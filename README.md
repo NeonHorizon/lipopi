@@ -28,7 +28,7 @@ Whilst the Pi is running the PowerBoost informs the Pi of the battery status by 
 ==
 ###Power-Up / Power-Down Version
 
-See [this page](https://github.com/NeonHorizon/lipopi/README.power_up_power_down.md) for a version in which the push button switch can both power up the Raspberry Pi and trigger an orderly shutdown
+See [this page](/README.power_up_power_down.md) for a version in which the push button switch can both power up the Raspberry Pi and trigger an orderly shutdown
 
 ==
 

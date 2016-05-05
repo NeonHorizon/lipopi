@@ -11,6 +11,7 @@ This uses a Python script that is run as a service from systemd
 ###Circuit Schematic
 
 ![schematic](/pictures/lipopi_schematic_powerboost.png)
+
 ==
 
 ###Setting up the Service with systemd
