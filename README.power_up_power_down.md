@@ -8,9 +8,24 @@ This uses a Python script that is run as a service from *systemd*, the Linux ini
 
 ==
 
-###Circuit Schematic
+###How It Works
 
 ![schematic](/pictures/lipopi_schematic_powerboost.png)
+
+The Low Battery signal path is identical to the LiPoPi original and the Power Up path ony differs by the addition of a 1N4001 diode between
+the switch and the Enable pin. This path relies on GPIO 14 being pulled high once the Pi is running. The diode prevents this from pulling GPIO 18 high.
+
+The Power Down path pulls GPIO 18 high when the pushbutton switch is pressed. The Python script reacts to this trigger and initiates a system shutdown.
+
+So what are the two 1N4001 diodes in series doing ? The Battery can have a voltage from around 4.7V when fully charged down to 3.2V when discharged.
+But the Pi can only tolerate 3.3V on its GPIO pins. You could handle this using two resistors to create a voltage divider (e.g. 33K and 100K) but in our case we
+the voltage drop inherent in diodes to lower this from 4.2V down to 2.8V (each 1N4001 has a forward voltage drop of around 0.7V).
+This is close enough to 3.3V that it will trigger the GPIO pin without the risk of damage.
+
+==
+
+###Adafruit PowerBoost Charger 500C versus 1000C
+
 
 ==
 
