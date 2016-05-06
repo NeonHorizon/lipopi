@@ -3,9 +3,14 @@ LiPoPi
 
 - **Description:** LiPoPi is a guide to setting up the Raspberry Pi with a LiPo battery including both running and charging it
 - **Project Website:** [GitHub](https://github.com/NeonHorizon/lipopi)
-- **Requirements:** A Raspberry Pi (any model) and an Adafruit PowerBoost 500 Charger (Adafruit 1944)
+- **Requirements:** A Raspberry Pi (any model) and an Adafruit [PowerBoost 500 Charger](https://www.adafruit.com/product/1944) or [1000C Charger](https://www.adafruit.com/products/2465)
 - **Skillset:** Requires soldering skills and a basic knowledge of the command line
 - **License:** GPL Version 3
+
+==
+###Power-Up / Power-Down Version
+
+See [this page](/README.power_up_power_down.md) for a version in which the push button switch can both power up the Raspberry Pi and trigger an orderly shutdown
 
 ==
 
@@ -24,6 +29,7 @@ LiPoPi
 When pushed the LiPoPi power button connects the battery output (Bat) to the enable line (EN) on the Adafruit PowerBoost which then powers up boosting the LiPo's 3.7v to the ~5.2v required by the Pi. This causes the Pi to begin to boot and after about 3 seconds GPIO 14 (UART TXD) goes high (due to its unique characteristic of going to 3.3v whilst the Pi is running and back to 0v when the Pi is shut down). This then takes over the job of keeping the enable line on the PowerBoost high and the Pi remains powered up even after the pushbutton is released.
 
 Whilst the Pi is running the PowerBoost informs the Pi of the battery status by switching the LB / LBO pin (which is connected to GPIO 15 - UART RXD) low when the battery is low. This is picked up by a cron task on the Pi which initiates a graceful shutdown making sure no data is lost and the SD card does not get corrupted. Once the Pi is shutdown (for whatever reason) GPIO 14 goes low again, causing the PowerBoost's enable line to drop and the whole system to power off.
+
 
 ==
 
@@ -110,4 +116,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 ###Credits
 [Daniel Bull](https://google.com/+DanielBull)
+
+[Rob Jones](https://github.com/craic)
+
 

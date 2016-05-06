@@ -1,0 +1,15 @@
+# systemd service file for LiPoPi button and low battery shutdown script
+# change the /home/pi paths to suite your configuration
+
+[Service]
+ExecStart=/home/pi/lipopi/lipopi.py
+WorkingDirectory=/home/pi/lipopi/
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=lipopi
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
