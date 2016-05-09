@@ -65,6 +65,18 @@ The pin layout differs between the two boards and so two diagrams are shown here
 
 ###lipopi.py
 
+>Python on the Pi - if you do not have Python and the Rpi.GPIO library installed on your Pi then you will need to do the following
+
+```bash
+sudo apt-get update
+sudo apt-get dist-upgrade
+
+sudo apt-get install python-dev
+
+sudo apt-get install python-setuptools
+sudo easy_install rpi.gpio
+```
+
 This python script monitors the relevant GPIO pins for either a button press or a low battery signal from the PowerBoost and triggers a
 safe shutdown of the Pi.
 
@@ -90,8 +102,9 @@ You can run the script directly from the command line to test things out.
 
 To have lipopi.py run automatically when you boot your machine, you can set up a service under the control of **systemd**.
 
+1: Download lipopi.py and lipopi.service from this repository
 
-1: Copy the service file to /etc/systemd
+2: Copy the service file to /etc/systemd
 
 Modify the file **lipopi.service** to point to where your copy of **lipopi.py** is located, then
 
@@ -100,7 +113,7 @@ $ sudo cp lipopi.service /etc/systemd/system/.
 ```
 
 
-2: Enable and start the service
+3: Enable and start the service
 
 ```bash
 $ sudo systemctl enable lipopi.service
@@ -109,7 +122,7 @@ $ sudo systemctl start  lipopi.service
 
 There is no need to restart the Pi
 
-3: Try it out
+4: Try it out
 
 Push the button and the Pi should shut down. Push it again (for several seconds) and the Pi will boot up.
 
