@@ -23,7 +23,7 @@ import time
 
 def lipopi_setup():
     global lipopi
-    
+
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
 
@@ -40,7 +40,7 @@ def lipopi_setup():
     GPIO.add_event_detect(lipopi['low_battery_pin'], GPIO.FALLING, callback=lipopi_low_battery_shutdown, bouncetime=300)
 
     # open log file in append mode
-    lipopi['logfile_pointer'] = open(lipopi['logfile'], 'a+')  
+    lipopi['logfile_pointer'] = open(lipopi['logfile'], 'a+')
 
 
 # Detect when the switch is pressed - wait shutdown_wait seconds - then shutdown
@@ -50,7 +50,7 @@ def lipopi_user_shutdown(channel):
 
     cmd = "sudo wall 'System shutting down in %d seconds'" % lipopi['shutdown_wait']
     os.system(cmd)
-    
+
     time.sleep(lipopi['shutdown_wait'])
 
     msg = time.strftime("User Request - Shutting down at %a, %d %b %Y %H:%M:%S +0000\n", time.gmtime())
@@ -61,7 +61,7 @@ def lipopi_user_shutdown(channel):
 
 
 # Respond to a low battery signal from the PowerBoost and shutdown
-# Pin goes low on low battery 
+# Pin goes low on low battery
 
 def lipopi_low_battery_shutdown(channel):
     global lipopi
@@ -95,8 +95,7 @@ lipopi = {}
 # Specify which GPIO pins to use
 lipopi['low_battery_pin'] = 15
 
-#lipopi['shutdown_pin']    = 18
-lipopi['shutdown_pin']    = 21
+lipopi['shutdown_pin']    = 18
 
 lipopi['logfile'] = '/home/pi/lipopi.log'  # FULL path to the log file
 # or do this relative to the location of this script?
@@ -110,7 +109,7 @@ lipopi_setup()
 # Although the shutdown is triggered by an interrupt, we still need a loop
 # to keep the script from exiting - just do a very long sleep
 
-while True:    
+while True:
     time.sleep(6000)
 
 # clean up if the script exits without machine shutdown
@@ -119,5 +118,5 @@ lipopi_cleanup()
 
 
 
-        
+
 
