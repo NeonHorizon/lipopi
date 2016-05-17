@@ -45,9 +45,9 @@ implied - that just what has been used here)
 
 Finally, the two boards look quite different as the pins are on opposite sides of the board. See the breadboard images below for more details.
 
-With the 500C the Battery voltage is measured from the BAT pin.
-This is the same on the 1000C but, in addition, the Vs pin has voltge of the Battery or the USB input depending on which power source is being used.
-Either pin can be used for the LiPoPi circuit.
+With the 500C and 1000C the Battery voltage is measured from the BAT pin. The Vs pin on the 1000C will have the battery voltage when powered by the batter but this
+will carry the USB voltage (5.2V) when the USB power cable is attached - this produces 3.8V after the diode voltage drops and this is too high for the 3.3V
+limit for the GPIO pins on the Pi - so don't use this.
 
 ==
 
@@ -64,6 +64,9 @@ The pin layout differs between the two boards and so two diagrams are shown here
 ==
 
 ###lipopi.py
+
+>NOTE - Before doing anything, be sure to run **sudo raspi-config** and under "Advanced Options" select "Serial" followed by "No".
+>This prevents the Pi using GPIO 14 for the console (which would shut off the power).
 
 >Python on the Pi - if you do not have Python and the Rpi.GPIO library installed on your Pi then you will need to do the following
 
@@ -92,8 +95,8 @@ You might want to put the script in its own directory such as /home/pi/lipopi
 
 You can run the script directly from the command line to test things out.
 
->NOTE - Before doing anything, be sure to run **sudo raspi-config** and under "Advanced Options" select "Serial" followed by "No".
->This prevents the Pi using GPIO 14 for the console (which would shut off the power).
+>NOTE - Be sure to test out any changes to the script on the command line, running with sudo, **before** you set it up using **systemd**.
+>If you have a bug in the script that shuts down the Pi, it can be a real pain to fix - trust me...
 
 
 ==
