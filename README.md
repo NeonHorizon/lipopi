@@ -123,9 +123,8 @@ You should have received a copy of the GNU General Public License along with thi
 ==
 
 ###Credits
-[Daniel Bull](https://google.com/+DanielBull)
 
-[Rob Jones](https://github.com/craic)
-
-[Simon](https://github.com/macsimski)
+- [Daniel Bull](https://google.com/+DanielBull)
+- [Rob Jones](https://github.com/craic)
+- [Simon](https://github.com/macsimski)
 
