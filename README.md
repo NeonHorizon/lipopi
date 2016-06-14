@@ -3,7 +3,7 @@ LiPoPi
 
 - **Description:** LiPoPi is a guide to setting up the Raspberry Pi with a LiPo battery including both running and charging it
 - **Project Website:** [GitHub](https://github.com/NeonHorizon/lipopi)
-- **Requirements:** A Raspberry Pi (any model) and an Adafruit [PowerBoost 500 Charger](https://www.adafruit.com/product/1944) or [1000C Charger](https://www.adafruit.com/products/2465)
+- **Requirements:** A Raspberry Pi (any model - see notes about the Raspbery Pi 3) and an Adafruit [PowerBoost 500 Charger](https://www.adafruit.com/product/1944) or [1000C Charger](https://www.adafruit.com/products/2465)
 - **Skillset:** Requires soldering skills and a basic knowledge of the command line
 - **License:** GPL Version 3
 
@@ -44,7 +44,7 @@ Whilst the Pi is running the PowerBoost informs the Pi of the battery status by 
 
 3. Shut everything down and disconnect the LiPo again.
 
-4. Solder a 100k resistor between one of the ground lines (GND) on the PowerBoost and the enable line (EN).
+4. Solder a 100k resistor between one of the ground lines (GND) on the PowerBoost and the enable line (EN). (See notes about Raspberry Pi 3)
 
 5. Connect the LiPo back up to the PowerBoost and if you have fitted the resistor correctly you will notice this time it doesn't power up on its own, this is because the resistor pulls the enable line low.
 
@@ -70,8 +70,16 @@ Whilst the Pi is running the PowerBoost informs the Pi of the battery status by 
 
 ==
 
+###Special Note About Raspberry Pi 3
+
+Unlike the other Pi's the Raspberry Pi 3 has a software emulated version of the UART which means that GPIO 14 is not high by default. The way to resolve this is to enable the console which produces enough data that we can "pretend" GPIO 14 is high by placing a 100uf capacitor across the 100k resistor.
+
+For more information please see [this thread](https://github.com/NeonHorizon/lipopi/issues/9#issuecomment-225816722)
+
+==
+
 ###Software
-1. Run sudo raspi-config and under "Advanced Options" select "Serial" followed by "No". This prevents the Pi using GPIO 14 for the console (which would shut off the power).
+1. Run sudo raspi-config and under "Advanced Options" select "Serial" followed by "No". This prevents the Pi using GPIO 14 for the console (which would shut off the power). (Do not do this on the Raspberry Pi 3, see notes)
 
 2. Run wget -N https://raw.github.com/NeonHorizon/lipopi/master/low_bat_shutdown to get the example script which checks for low battery and shuts down the Pi (if you prefer you could write this in Python or whatever).
 
@@ -119,4 +127,5 @@ You should have received a copy of the GNU General Public License along with thi
 
 [Rob Jones](https://github.com/craic)
 
+[Simon](https://github.com/macsimski)
 
