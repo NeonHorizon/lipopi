@@ -30,7 +30,7 @@ When pushed the LiPoPi power button connects the battery output (Bat) to the ena
 
 Whilst the Pi is running the PowerBoost informs the Pi of the battery status by switching the LB / LBO pin (which is connected to GPIO 15 - UART RXD) low when the battery is low. This is picked up by a cron task on the Pi which initiates a graceful shutdown making sure no data is lost and the SD card does not get corrupted. Once the Pi is shutdown (for whatever reason) GPIO 14 goes low again, causing the PowerBoost's enable line to drop and the whole system to power off.
 
-We've had a question about how long the batteries will last, a few of you might wish to know how to caclulate this. For more information see the [thread here](https://github.com/NeonHorizon/lipopi/issues/4)
+We've had a question about how long the batteries will last, a few of you might wish to know how to calculate this. For more information see the [thread here](https://github.com/NeonHorizon/lipopi/issues/4)
 
 ==
 
