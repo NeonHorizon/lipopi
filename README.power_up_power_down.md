@@ -45,7 +45,7 @@ implied - that just what has been used here)
 
 Finally, the two boards look quite different as the pins are on opposite sides of the board. See the breadboard images below for more details.
 
-With the 500C and 1000C the Battery voltage is measured from the BAT pin. The Vs pin on the 1000C will have the battery voltage when powered by the batter but this
+With the 500C and 1000C the Battery voltage is measured from the BAT pin. The Vs pin on the 1000C will have the battery voltage when powered by the battery but this
 will carry the USB voltage (5.2V) when the USB power cable is attached - this produces 3.8V after the diode voltage drops and this is too high for the 3.3V
 limit for the GPIO pins on the Pi - so don't use this.
 
