@@ -10,7 +10,12 @@ LiPoPi
 ==
 ###Power-Up / Power-Down Version
 
-See [this page](/README.power_up_power_down.md) for a version in which the push button switch can both power up the Raspberry Pi and trigger an orderly shutdown
+See [this page](/README.power_up_power_down.md) for a version in which the push button switch can both power up the Raspberry Pi and trigger an orderly shutdown.
+
+==
+###Advanced Version With Battery Level Monitoring
+
+See [this page](https://github.com/craic/pi_power) for advanced version of this project which includes the features of the power up/down version above as well as battery level monitoring.
 
 ==
 
