@@ -19,7 +19,7 @@ See [this page](https://github.com/craic/pi_power) for advanced version of this 
 
 ==
 
-###Features
+###Basic Version Features
 - Push button to power up the Pi (requires a long push - good for preventing accidental starts)
 - Automatic shut off of the PowerBoost power supply after the Pi is shutdown
 - Automatic graceful shutdown of the Pi when the battery is low (to stop SD card corruption)
