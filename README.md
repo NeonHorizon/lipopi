@@ -85,9 +85,9 @@ For more information please see [this thread](https://github.com/NeonHorizon/lip
 ==
 
 ###Software
-1. Run sudo raspi-config and select "5 - Interfacing Options" / "P6 Serial". It is then necessary to answer as follows:
-"Would you like a login shell to be accessible over serial?" - No
-"Would you like the serial port hardware to be enabled?" - Yes
+1. Run sudo raspi-config and select "5 - Interfacing Options" / "P6 Serial". It is then necessary to answer as follows:  
+"Would you like a login shell to be accessible over serial?" - No  
+"Would you like the serial port hardware to be enabled?" - Yes  
 (Do not do this on the Raspberry Pi 3, see notes)
 
 2. Run wget -N https://raw.github.com/NeonHorizon/lipopi/master/low_bat_shutdown to get the example script which checks for low battery and shuts down the Pi (if you prefer you could write this in Python or whatever).
