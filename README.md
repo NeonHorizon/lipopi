@@ -7,19 +7,21 @@ LiPoPi
 - **Skillset:** Requires soldering skills and a basic knowledge of the command line
 - **License:** GPL Version 3
 
-==
-###Power-Up / Power-Down Version
+---
+
+### Power-Up / Power-Down Version
 
 See [this page](/README.power_up_power_down.md) for a version in which the push button switch can both power up the Raspberry Pi and trigger an orderly shutdown.
 
-==
-###Advanced Version With Battery Level Monitoring
+---
+
+### Advanced Version With Battery Level Monitoring
 
 See [this page](https://github.com/craic/pi_power) for advanced version of this project which includes the features of the power up/down version above as well as battery level monitoring.
 
-==
+---
 
-###Basic Version Features
+### Basic Version Features
 - Push button to power up the Pi (requires a long push - good for preventing accidental starts)
 - Automatic shut off of the PowerBoost power supply after the Pi is shutdown
 - Automatic graceful shutdown of the Pi when the battery is low (to stop SD card corruption)
@@ -28,18 +30,18 @@ See [this page](https://github.com/craic/pi_power) for advanced version of this 
 
 ![overview](https://raw.github.com/NeonHorizon/lipopi/master/pictures/overview.jpg)
 
-==
+---
 
-###How it Works
+### How it Works
 When pushed the LiPoPi power button connects the battery output (Bat) to the enable line (EN) on the Adafruit PowerBoost which then powers up boosting the LiPo's 3.7v to the ~5.2v required by the Pi. This causes the Pi to begin to boot and after about 3 seconds GPIO 14 (UART TXD) goes high (due to its unique characteristic of going to 3.3v whilst the Pi is running and back to 0v when the Pi is shut down). This then takes over the job of keeping the enable line on the PowerBoost high and the Pi remains powered up even after the pushbutton is released.
 
 Whilst the Pi is running the PowerBoost informs the Pi of the battery status by switching the LB / LBO pin (which is connected to GPIO 15 - UART RXD) low when the battery is low. This is picked up by a cron task on the Pi which initiates a graceful shutdown making sure no data is lost and the SD card does not get corrupted. Once the Pi is shutdown (for whatever reason) GPIO 14 goes low again, causing the PowerBoost's enable line to drop and the whole system to power off.
 
 We've had a question about how long the batteries will last, a few of you might wish to know how to calculate this. For more information see the [thread here](https://github.com/NeonHorizon/lipopi/issues/4)
 
-==
+---
 
-###Hardware
+### Hardware
 ![circuit](https://raw.github.com/NeonHorizon/lipopi/master/pictures/circuit.png)
 
 *(Please Note: Do not connect devices which use GPIO 14 or 15 (UART/Serial) to the Pi at the same time as this circuit as they will cause your Pi to power off or shutdown)*
@@ -74,17 +76,17 @@ We've had a question about how long the batteries will last, a few of you might 
 
 15. Connect a wire between the low battery line (LB / LBO) on the PowerBoost and pin 10 (GPIO 15 - UART RXD) on the Raspberry Pi, this is to tell the Pi when the battery is low (you can use a different GPIO if you prefer).
 
-==
+---
 
-###Special Note About Raspberry Pi 3
+### Special Note About Raspberry Pi 3
 
 Unlike the other Pi's the Raspberry Pi 3 has a software emulated version of the UART which means that GPIO 14 is not high by default. The way to resolve this is to enable the console which produces enough data that we can "pretend" GPIO 14 is high by placing a 100uf capacitor across the 100k resistor.
 
 For more information please see [this thread](https://github.com/NeonHorizon/lipopi/issues/9#issuecomment-225816722)
 
-==
+---
 
-###Software
+### Software
 1. Run sudo raspi-config and select "5 - Interfacing Options" / "P6 Serial". It is then necessary to answer as follows:  
 "Would you like a login shell to be accessible over serial?" - No  
 "Would you like the serial port hardware to be enabled?" - Yes  
@@ -110,18 +112,18 @@ For more information please see [this thread](https://github.com/NeonHorizon/lip
 
 11. If all is good you should be able to leave the Pi running and when the battery gets low it should shut down. You can check this worked OK by running the Pi until it goes off then powering it up again (once you have connected power) and checking the log file. If the file is blank then the Pi was not shutdown properly.
 
-==
+---
 
-###Example Implementation
+### Example Implementation
 ![running](https://raw.github.com/NeonHorizon/lipopi/master/pictures/running.jpg)
 ![connectors](https://raw.github.com/NeonHorizon/lipopi/master/pictures/connectors.jpg)
 ![wiring](https://raw.github.com/NeonHorizon/lipopi/master/pictures/wiring.jpg)
 ![angle](https://raw.github.com/NeonHorizon/lipopi/master/pictures/angle.jpg)
 ![charging](https://raw.github.com/NeonHorizon/lipopi/master/pictures/charging.jpg)
 
-==
+---
 
-###License Information
+### License Information
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
@@ -129,9 +131,9 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 You should have received a copy of the GNU General Public License along with this program.  If not, see [http://www.gnu.org/licenses/](http://www.gnu.org/licenses/).
 
-==
+---
 
-###Credits
+### Credits
 
 - [Daniel Bull](https://google.com/+DanielBull)
 - [Rob Jones](https://github.com/craic)
