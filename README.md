@@ -87,30 +87,29 @@ For more information please see [this thread](https://github.com/NeonHorizon/lip
 ---
 
 ### Software
-1. Run sudo raspi-config and select "5 - Interfacing Options" / "P6 Serial". It is then necessary to answer as follows:  
-"Would you like a login shell to be accessible over serial?" - No  
-"Would you like the serial port hardware to be enabled?" - Yes  
-(Do not do this on the Raspberry Pi 3, see notes)
+1. Run sudo raspi-config and select "Advanced Options" followed by "Serial" and answer "Would you like a login shell to be accessible over serial?" with No.
 
-2. Run wget -N https://raw.github.com/NeonHorizon/lipopi/master/low_bat_shutdown to get the example script which checks for low battery and shuts down the Pi (if you prefer you could write this in Python or whatever).
+2. Edit your boot config by typing sudo nano /boot/config.txt and change enable_uart=0 to enable_uart=1 (do not do this on the Raspberry Pi 3, see notes)
 
-3. Make it executable with chmod +x low_bat_shutdown
+3. Run wget -N https://raw.github.com/NeonHorizon/lipopi/master/low_bat_shutdown to get the example script which checks for low battery and shuts down the Pi (if you prefer you could write this in Python or whatever).
 
-4. If you used a pin other than GPIO 15 for the low battery line (hardware step 15), edit this file and change the pin number (otherwise you don't need to edit it at all).
+4. Make it executable with chmod +x low_bat_shutdown
 
-5. Execute this script by typing ./low_bat_shutdown nothing should happen. If the Pi shuts down then you did something wrong in Hardware step 15.
+5. If you used a pin other than GPIO 15 for the low battery line (hardware step 15), edit this file and change the pin number (otherwise you don't need to edit it at all).
 
-6. Either leave the script in your home directory or move it to somewhere on the Pi where it wont get deleted, it needs to be run regularly by the system to check for low battery, if you delete it your Pi wont shut down!
+6. Execute this script by typing ./low_bat_shutdown nothing should happen. If the Pi shuts down then you did something wrong in Hardware step 15.
 
-7. Go into the cron directory where scheduled tasks are by typing cd /etc/cron.d
+7. Either leave the script in your home directory or move it to somewhere on the Pi where it wont get deleted, it needs to be run regularly by the system to check for low battery, if you delete it your Pi wont shut down!
 
-8. Fetch the example script (which repeatedly checks for low battery) by typing wget -N https://raw.github.com/NeonHorizon/lipopi/master/power_check
+8. Go into the cron directory where scheduled tasks are by typing cd /etc/cron.d
 
-9. Edit the script and change the path (underneath where it says command) to the full path of your low_bat_shutdown script (where you moved it in step 6), by default it looks in the Pi home directory.
+9. Fetch the example script (which repeatedly checks for low battery) by typing wget -N https://raw.github.com/NeonHorizon/lipopi/master/power_check
 
-10. The last part of the script ( >> /home/pi/low_bat_shutdown.log 2&>1 ) produces a log file in your home directory, you can change this if you wish.
+10. Edit the script and change the path (underneath where it says command) to the full path of your low_bat_shutdown script (where you moved it in step 6), by default it looks in the Pi home directory.
 
-11. If all is good you should be able to leave the Pi running and when the battery gets low it should shut down. You can check this worked OK by running the Pi until it goes off then powering it up again (once you have connected power) and checking the log file. If the file is blank then the Pi was not shutdown properly.
+11. The last part of the script ( >> /home/pi/low_bat_shutdown.log 2&>1 ) produces a log file in your home directory, you can change this if you wish.
+
+12. If all is good you should be able to leave the Pi running and when the battery gets low it should shut down. You can check this worked OK by running the Pi until it goes off then powering it up again (once you have connected power) and checking the log file. If the file is blank then the Pi was not shutdown properly.
 
 ---
 
@@ -139,4 +138,4 @@ You should have received a copy of the GNU General Public License along with thi
 - [Rob Jones](https://github.com/craic)
 - [Simon](https://github.com/macsimski)
 - [Tom McIntyre](https://github.com/tommcintyre)
-
+- [Jean Rocco](https://github.com/jeanrocco)
