@@ -3,7 +3,7 @@ LiPoPi
 
 - **Description:** LiPoPi is a guide to setting up the Raspberry Pi with a LiPo battery including both running and charging it
 - **Project Website:** [GitHub](https://github.com/NeonHorizon/lipopi)
-- **Requirements:** A Raspberry Pi (any model - see notes about the Raspbery Pi 3) and an Adafruit [PowerBoost 500 Charger](https://www.adafruit.com/product/1944) or [1000C Charger](https://www.adafruit.com/products/2465)
+- **Requirements:** A Raspberry Pi and an Adafruit [PowerBoost 500 Charger](https://www.adafruit.com/product/1944) or [1000C Charger](https://www.adafruit.com/products/2465)
 - **Skillset:** Requires soldering skills and a basic knowledge of the command line
 - **License:** GPL Version 3
 
@@ -80,9 +80,12 @@ We've had a question about how long the batteries will last, a few of you might 
 
 ### Special Note About Raspberry Pi 3
 
-Unlike the other Pi's the Raspberry Pi 3 has a software emulated version of the UART which means that GPIO 14 is not high by default. The way to resolve this is to enable the console which produces enough data that we can "pretend" GPIO 14 is high by placing a 100uf capacitor across the 100k resistor.
+Unlike the other Pi's the Raspberry Pi 3 has a software emulated version of the UART which means that GPIO 14 is not high by default with earlier versions of Raspbian. The way to resolve this is to enable the console which produces enough data that we can "pretend" GPIO 14 is high by placing a 100uf capacitor across the 100k resistor.
 
-For more information please see [this thread](https://github.com/NeonHorizon/lipopi/issues/9#issuecomment-225816722)
+However this appears to be solved in the newer versions so you can use the Pi3 in the same way as with the other models.
+
+For more information please see [this thread](https://github.com/NeonHorizon/lipopi/issues/9)
+For more information please see [and this thread](https://github.com/NeonHorizon/lipopi/issues/28)
 
 ---
 
