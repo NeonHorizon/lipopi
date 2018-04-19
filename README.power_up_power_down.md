@@ -67,6 +67,7 @@ The pin layout differs between the two boards and so two diagrams are shown here
 
 >NOTE - Before doing anything, be sure to run **sudo raspi-config** and under "Advanced Options" select "Serial" followed by "No".
 >This prevents the Pi using GPIO 14 for the console (which would shut off the power).
+>You may also need to edit your boot config by typing sudo nano /boot/config.txt and change enable_uart=0 to enable_uart=1
 
 >Python on the Pi - if you do not have Python and the Rpi.GPIO library installed on your Pi then you will need to do the following
 
