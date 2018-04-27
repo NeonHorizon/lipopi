@@ -10,7 +10,7 @@ This uses a Python script that is run as a service from *systemd*, the Linux ini
 
 ###How It Works
 
-![schematic](/pictures/lipopi_schematic_powerboost.png)
+![schematic](./pictures/lipopi_schematic_powerboost.png)
 
 The Low Battery signal path is identical to the LiPoPi original and the Power Up path ony differs by the addition of a 1N4001 diode between
 the switch and the Enable pin. This path relies on GPIO 14 being pulled high once the Pi is running. The diode prevents this from pulling GPIO 18 high.
@@ -21,6 +21,22 @@ So what are the two 1N4001 diodes in series doing ? The Battery can have a volta
 But the Pi can only tolerate 3.3V on its GPIO pins. You could handle this using two resistors to create a voltage divider (e.g. 33K and 100K) but in our case we
 the voltage drop inherent in diodes to lower this from 4.2V down to 2.8V (each 1N4001 has a forward voltage drop of around 0.7V).
 This is close enough to 3.3V that it will trigger the GPIO pin without the risk of damage.
+
+==
+
+###A Simple Press (no hold) Power Up Version
+
+I found that with the latest version of Raspbian that UART TX took a long time to stabilize and stay up - around 8 seconds. This required holding the power switch for at least that long. I needed a version of the circuit that only required a momentary press of the power switch to both power on and power off the Raspberry Pi. To solve this, we can add an RC network to hold EN high long enough to allow UART TX to remain high.
+
+![schematic](./pictures/lipopi_schematic_powerboost_rc.png)
+
+This version works much the same way as the earlier schematic with the following differences:
+
+- The two diodes in the power down circuit are replaced with a resistive voltage divider. This actually reduces the component count because the 33K resistor provides the same current protection function as the 10K in the original design.
+
+- A 100uf capacitor has been added that now creates an RC network in conjunction with the existing 100K pulldown resistor between EN and ground. You can vary the values of each component but be aware that changes to the resistor can affect its ability to function as a pull down resistor. If possible limit your changes to the value of the capacitor.
+
+The 100uf capacitor and the 100K resistor provides a decay of around 10 seconds. This is both for power up and power down, resulting in the PowerBoost remaining powered up for about 8 seconds after the Pi shuts down. This doesn't have any effect on the Pi however, save for a miniscule amount of battery drain.
 
 ==
 
@@ -56,9 +72,9 @@ limit for the GPIO pins on the Pi - so don't use this.
 This circuit has been tested with both the 500C and 1000C models of Adafruit PowerBoost Chargers.
 The pin layout differs between the two boards and so two diagrams are shown here.
 
-![schematic](/pictures/lipopi_breadboard_powerboost_500C.png)
+![schematic](./pictures/lipopi_breadboard_powerboost_500C.png)
 
-![schematic](/pictures/lipopi_breadboard_powerboost_1000C.png)
+![schematic](./pictures/lipopi_breadboard_powerboost_1000C.png)
 
 
 ==
@@ -67,6 +83,9 @@ The pin layout differs between the two boards and so two diagrams are shown here
 
 >NOTE - Before doing anything, be sure to run **sudo raspi-config** and under "Advanced Options" select "Serial" followed by "No".
 >This prevents the Pi using GPIO 14 for the console (which would shut off the power).
+
+>On newer versions of Raspbian, the menu options have changed - select "Interfacing Options" instead of "Advanced Options". Disable the serial console but DO NOT DISABLE THE SERIAL HARDWARE or UART TX will not stay high after power up.
+
 >You may also need to edit your boot config by typing sudo nano /boot/config.txt and change enable_uart=0 to enable_uart=1
 
 >Python on the Pi - if you do not have Python and the Rpi.GPIO library installed on your Pi then you will need to do the following
