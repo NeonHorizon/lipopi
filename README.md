@@ -142,3 +142,4 @@ You should have received a copy of the GNU General Public License along with thi
 - [Simon](https://github.com/macsimski)
 - [Tom McIntyre](https://github.com/tommcintyre)
 - [Jean Rocco](https://github.com/jeanrocco)
+- [Steve Johnson](https://github.com/svenyonson)
