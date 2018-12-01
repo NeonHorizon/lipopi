@@ -7,7 +7,7 @@ gpio_port="15"
 
 # Enable GPIO
 if [ ! -d "/sys/class/gpio/gpio$gpio_port" ]; then
-  echo 15 > /sys/class/gpio/export || { echo -e "Can't access GPIO $gpio_port" 1>&2; exit 1; }
+  echo $gpio_port > /sys/class/gpio/export || { echo -e "Can't access GPIO $gpio_port" 1>&2; exit 1; }
 fi
 
 # Set it to input
