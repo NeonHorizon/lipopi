@@ -70,7 +70,7 @@ We've had a question about how long the batteries will last, a few of you might 
 
 12. Connect the LiPo back up to the PowerBoost, again the Pi should not start.
 
-13. Press and hold the button for at least 3 seconds, the Pi should start booting. Release the button and the Pi should continue booting.
+13. Press and hold the button for at least 3 seconds, the Pi should start booting. If you have done step 1 of the software instructions when you release the button the Pi should continue booting.
 
 14. Shutdown the Pi with the shutdown command (DO NOT use the halt command), the Pi should shut down followed by the PowerBoost shutting off.
 
