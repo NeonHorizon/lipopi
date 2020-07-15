@@ -132,7 +132,7 @@ You should have received a copy of the GNU General Public License along with thi
 
 ### Credits
 
-- [Daniel Bull](https://google.com/+DanielBull)
+- [Daniel Bull](https://github.com/NeonHorizon)
 - [Rob Jones](https://github.com/craic)
 - [Simon](https://github.com/macsimski)
 - [Tom McIntyre](https://github.com/tommcintyre)
