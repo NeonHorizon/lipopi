@@ -152,4 +152,15 @@ Push the button and the Pi should shut down. Push it again (for several seconds)
 The log file will be written to /home/pi/lipopi - change this in the lipopi.py script if you want.
 
 
+---
+
+### UPDATE: Improved Circuit
+
+Duncan has suggested the following version of the above circuit which improves on the 3v3 level control to the shutdown pin.
+
+This should provide more stability as the battery level fluctuates.
+
+![schematic](./pictures/lipopi_schematic_powerboost_revised.png)
+
+See [this issue](https://github.com/NeonHorizon/lipopi/issues/54) for more information
 

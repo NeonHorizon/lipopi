@@ -138,3 +138,4 @@ You should have received a copy of the GNU General Public License along with thi
 - [Tom McIntyre](https://github.com/tommcintyre)
 - [Jean Rocco](https://github.com/jeanrocco)
 - [Steve Johnson](https://github.com/svenyonson)
+- [Duncan Tourolle](https://github.com/dtourolle)
