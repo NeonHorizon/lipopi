@@ -6,9 +6,9 @@ as shown already, as well as trigger an orderly shutdown of the Pi when it is pr
 
 This uses a Python script that is run as a service from *systemd*, the Linux init system that starts up certain processes when the system boots.
 
-==
+---
 
-###How It Works
+### How It Works
 
 ![schematic](./pictures/lipopi_schematic_powerboost.png)
 
@@ -22,9 +22,9 @@ But the Pi can only tolerate 3.3V on its GPIO pins. You could handle this using 
 the voltage drop inherent in diodes to lower this from 4.2V down to 2.8V (each 1N4001 has a forward voltage drop of around 0.7V).
 This is close enough to 3.3V that it will trigger the GPIO pin without the risk of damage.
 
-==
+---
 
-###A Simple Press (no hold) Power Up Version
+### A Simple Press (no hold) Power Up Version
 
 I found that with the latest version of Raspbian that UART TX took a long time to stabilize and stay up - around 8 seconds. This required holding the power switch for at least that long. I needed a version of the circuit that only required a momentary press of the power switch to both power on and power off the Raspberry Pi. To solve this, we can add an RC network to hold EN high long enough to allow UART TX to remain high.
 
@@ -38,9 +38,9 @@ This version works much the same way as the earlier schematic with the following
 
 The 100uf capacitor and the 100K resistor provides a decay of around 10 seconds. This is both for power up and power down, resulting in the PowerBoost remaining powered up for about 8 seconds after the Pi shuts down. This doesn't have any effect on the Pi however, save for a miniscule amount of battery drain.
 
-==
+---
 
-###Adafruit PowerBoost Charger 500C versus 1000C
+### Adafruit PowerBoost Charger 500C versus 1000C
 
 LiPoPi works with both the [500C](https://www.adafruit.com/product/1944) and [1000C](https://www.adafruit.com/products/2465) PowerBoost Chargers from Adafruit.
 There are, however, some important differences between the two devices.
@@ -65,9 +65,9 @@ With the 500C and 1000C the Battery voltage is measured from the BAT pin. The Vs
 will carry the USB voltage (5.2V) when the USB power cable is attached - this produces 3.8V after the diode voltage drops and this is too high for the 3.3V
 limit for the GPIO pins on the Pi - so don't use this.
 
-==
+---
 
-###Breadboard Layouts
+### Breadboard Layouts
 
 This circuit has been tested with both the 500C and 1000C models of Adafruit PowerBoost Chargers.
 The pin layout differs between the two boards and so two diagrams are shown here.
@@ -77,9 +77,9 @@ The pin layout differs between the two boards and so two diagrams are shown here
 ![schematic](./pictures/lipopi_breadboard_powerboost_1000C.png)
 
 
-==
+---
 
-###lipopi.py
+### lipopi.py
 
 >NOTE - Before doing anything, be sure to run **sudo raspi-config** and under "Advanced Options" select "Serial" followed by "No".
 >This prevents the Pi using GPIO 14 for the console (which would shut off the power).
@@ -119,9 +119,9 @@ You can run the script directly from the command line to test things out.
 >If you have a bug in the script that shuts down the Pi, it can be a real pain to fix - trust me...
 
 
-==
+---
 
-###Setting up the Service with systemd
+### Setting up the Service with systemd
 
 To have lipopi.py run automatically when you boot your machine, you can set up a service under the control of **systemd**.
 
